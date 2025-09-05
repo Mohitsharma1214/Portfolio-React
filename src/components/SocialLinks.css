@@ -1,0 +1,44 @@
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.social-links a {
+  color: #4facfe;
+  font-size: 1.8rem;
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #00f2fe;
+  transform: translateY(-3px);
+}
+
+/* Specific hover colors for each platform */
+.social-links a[title="GitHub"]:hover {
+  color: #333;
+}
+
+.social-links a[title="LinkedIn"]:hover {
+  color: #0077b5;
+}
+
+.social-links a[title="Kaggle"]:hover {
+  color: #20beff;
+}
+
+.social-links a[title="Instagram"]:hover {
+  color: #e4405f;
+}
+
+@media (max-width: 768px) {
+  .social-links {
+    gap: 1.5rem;
+  }
+  
+  .social-links a {
+    font-size: 1.5rem;
+  }
+}

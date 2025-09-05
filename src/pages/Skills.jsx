@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import CountingNumber from '../components/CountingNumber';
 
 const Skills = () => {
   const containerVariants = {
@@ -188,19 +189,27 @@ const Skills = () => {
           <motion.div className="skills-summary" variants={itemVariants}>
             <div className="summary-stats">
               <div className="stat-item">
-                <div className="stat-number">1.5+</div>
+                <div className="stat-number">
+                  <CountingNumber end={1.5} suffix="+" decimals={1} duration={2} />
+                </div>
                 <div className="stat-label">Years Experience</div>
               </div>
               <div className="stat-item">
-                <div className="stat-number">25+</div>
+                <div className="stat-number">
+                  <CountingNumber end={25} suffix="+" duration={2.5} />
+                </div>
                 <div className="stat-label">Technologies</div>
               </div>
               <div className="stat-item">
-                <div className="stat-number">15+</div>
+                <div className="stat-number">
+                  <CountingNumber end={15} suffix="+" duration={2.2} />
+                </div>
                 <div className="stat-label">Projects</div>
               </div>
               <div className="stat-item">
-                <div className="stat-number">5+</div>
+                <div className="stat-number">
+                  <CountingNumber end={5} suffix="+" duration={1.8} />
+                </div>
                 <div className="stat-label">Certifications</div>
               </div>
             </div>

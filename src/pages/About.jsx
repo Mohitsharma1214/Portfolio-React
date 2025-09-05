@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import CountingNumber from '../components/CountingNumber';
 
 const About = () => {
   const containerVariants = {
@@ -50,16 +51,16 @@ const About = () => {
   ];
 
   const achievements = [
-    { number: "15+", label: "Projects Completed" },
-    { number: "1.5+", label: "Years Experience" },
-    { number: "3+", label: "Major Roles" },
-    { number: "12+", label: "Technologies Mastered" }
+    { number: 15, suffix: "+", label: "Projects Completed" },
+    { number: 1.5, suffix: "+", label: "Years Experience", decimals: 1 },
+    { number: 3, suffix: "+", label: "Major Roles" },
+    { number: 12, suffix: "+", label: "Technologies Mastered" }
   ];
 
   return (
     <div className="about">
       <div className="container">
-        <motion.div 
+        <motion.div
           className="about-content"
           variants={containerVariants}
           initial="hidden"
@@ -77,14 +78,14 @@ const About = () => {
               <div className="text-section">
                 <h3>My Journey</h3>
                 <p>
-                  Hi, I'm Mohit Sharma, an AI & Data Scientist with a passion for building intelligent 
-                  systems that solve real-world problems. My journey in artificial intelligence began 
-                  during my computer science studies, where I was fascinated by the potential of 
+                  Hi, I'm Mohit Sharma, an AI & Data Scientist with a passion for building intelligent
+                  systems that solve real-world problems. My journey in artificial intelligence began
+                  during my computer science studies, where I was fascinated by the potential of
                   machines to learn and adapt.
                 </p>
                 <p>
-                  Over the years, I've specialized in Computer Vision, Natural Language Processing, 
-                  and Generative AI, with extensive experience in end-to-end ML pipelines and MLOps. 
+                  Over the years, I've specialized in Computer Vision, Natural Language Processing,
+                  and Generative AI, with extensive experience in end-to-end ML pipelines and MLOps.
                   I believe in the power of AI to transform industries and improve lives.
                 </p>
               </div>
@@ -92,9 +93,9 @@ const About = () => {
               <div className="text-section">
                 <h3>What Drives Me</h3>
                 <p>
-                  I'm driven by curiosity and the desire to push the boundaries of what's possible 
-                  with AI. Whether it's developing computer vision systems that can detect diseases 
-                  early or creating NLP models that understand human emotions, I'm always excited 
+                  I'm driven by curiosity and the desire to push the boundaries of what's possible
+                  with AI. Whether it's developing computer vision systems that can detect diseases
+                  early or creating NLP models that understand human emotions, I'm always excited
                   about the next challenge.
                 </p>
               </div>
@@ -107,7 +108,14 @@ const About = () => {
                     variants={itemVariants}
                     whileHover={{ scale: 1.05 }}
                   >
-                    <div className="achievement-number">{achievement.number}</div>
+                    <div className="achievement-number">
+                      <CountingNumber
+                        end={achievement.number}
+                        suffix={achievement.suffix}
+                        decimals={achievement.decimals || 0}
+                        duration={2.5}
+                      />
+                    </div>
                     <div className="achievement-label">{achievement.label}</div>
                   </motion.div>
                 ))}
@@ -117,9 +125,9 @@ const About = () => {
             <motion.div className="about-visual" variants={itemVariants}>
               <div className="profile-card">
                 <div className="profile-image-large">
-                  <img 
-                    src="/images/profile-avatar.png" 
-                    alt="Mohit Sharma - Professional Photo" 
+                  <img
+                    src="/images/profile-avatar.png"
+                    alt="Mohit Sharma - Professional Photo"
                     className="profile-img"
                     onError={(e) => {
                       e.target.style.display = 'none';
@@ -131,18 +139,24 @@ const About = () => {
                 <div className="profile-info">
                   <h4>Mohit Sharma</h4>
                   <p>AI Developer & Data Scientist</p>
-                  
+
                   <div className="profile-stats">
                     <div className="profile-stat">
-                      <span className="stat-value">1.5+</span>
+                      <span className="stat-value">
+                        <CountingNumber end={1.5} suffix="+" decimals={1} duration={2} />
+                      </span>
                       <span className="stat-text">Years Exp</span>
                     </div>
                     <div className="profile-stat">
-                      <span className="stat-value">15+</span>
+                      <span className="stat-value">
+                        <CountingNumber end={15} suffix="+" duration={2.2} />
+                      </span>
                       <span className="stat-text">Projects</span>
                     </div>
                     <div className="profile-stat">
-                      <span className="stat-value">3</span>
+                      <span className="stat-value">
+                        <CountingNumber end={3} duration={1.8} />
+                      </span>
                       <span className="stat-text">Companies</span>
                     </div>
                   </div>

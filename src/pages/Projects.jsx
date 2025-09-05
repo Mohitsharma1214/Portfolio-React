@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import CountingNumber from '../components/CountingNumber';
 
 const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -241,7 +242,9 @@ const Projects = () => {
                   <i className="fas fa-project-diagram"></i>
                 </div>
                 <div className="stat-content">
-                  <div className="stat-number">15+</div>
+                  <div className="stat-number">
+                    <CountingNumber end={15} suffix="+" duration={2.2} />
+                  </div>
                   <div className="stat-label">Projects Completed</div>
                 </div>
               </div>
@@ -250,7 +253,9 @@ const Projects = () => {
                   <i className="fas fa-building"></i>
                 </div>
                 <div className="stat-content">
-                  <div className="stat-number">1</div>
+                  <div className="stat-number">
+                    <CountingNumber end={1} duration={1.5} />
+                  </div>
                   <div className="stat-label">Company (HairScope)</div>
                 </div>
               </div>
@@ -259,7 +264,9 @@ const Projects = () => {
                   <i className="fas fa-award"></i>
                 </div>
                 <div className="stat-content">
-                  <div className="stat-number">95%</div>
+                  <div className="stat-number">
+                    <CountingNumber end={95} suffix="%" duration={2.5} />
+                  </div>
                   <div className="stat-label">Success Rate</div>
                 </div>
               </div>

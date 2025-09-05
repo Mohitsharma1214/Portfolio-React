@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import CountingNumber from '../components/CountingNumber';
 
 const Home = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -223,15 +224,21 @@ const Home = () => {
               </p>
               <div className="preview-stats">
                 <div className="stat">
-                  <span className="stat-number">1.5+</span>
+                  <span className="stat-number">
+                    <CountingNumber end={1.5} suffix="+" decimals={1} duration={2} />
+                  </span>
                   <span className="stat-label">Years Experience</span>
                 </div>
                 <div className="stat">
-                  <span className="stat-number">15+</span>
+                  <span className="stat-number">
+                    <CountingNumber end={15} suffix="+" duration={2.2} />
+                  </span>
                   <span className="stat-label">Projects</span>
                 </div>
                 <div className="stat">
-                  <span className="stat-number">3</span>
+                  <span className="stat-number">
+                    <CountingNumber end={3} duration={1.8} />
+                  </span>
                   <span className="stat-label">Roles at HairScope</span>
                 </div>
               </div>

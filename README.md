@@ -1,12 +1,69 @@
-# React + Vite
+# Mohit Sharma - AI Developer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive portfolio website showcasing AI/ML expertise, built with React and Framer Motion.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Modern Design**: Clean, professional UI with dark theme
+- **Responsive**: Optimized for all device types
+- **Interactive**: Smooth animations and micro-interactions
+- **Performance**: Optimized loading and SEO-ready
+- **Accessible**: WCAG compliant with keyboard navigation
+- **Contact Form**: Functional contact form with Formspree integration
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend**: React 19, Vite
+- **Styling**: CSS3 with custom properties
+- **Animations**: Framer Motion
+- **Routing**: React Router DOM
+- **Icons**: Font Awesome
+- **Forms**: Formspree integration
+- **Deployment**: Vercel
+
+## 📱 Sections
+
+1. **Home**: Hero section with introduction and call-to-actions
+2. **About**: Professional journey, experience timeline, and achievements
+3. **Skills**: Technical skills with proficiency levels and certifications
+4. **Projects**: Featured projects with filtering and detailed modals
+5. **Contact**: Contact form and social media links
+
+## 🚀 Quick Start
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+## 📧 Contact
+
+- **Email**: mohitxsharma09@gmail.com
+- **Phone**: +91 7879115913
+- **Location**: Bhopal, Madhya Pradesh, India
+
+## 🔗 Social Links
+
+- [LinkedIn](https://www.linkedin.com/in/mohitsharmas-/)
+- [GitHub](https://github.com/mohitsharma1214)
+- [Kaggle](https://www.kaggle.com/mohitsharma12a)
+- [Instagram](https://www.instagram.com/mohitsharmas_/)
+- [Hugging Face](https://huggingface.co/Mohitsharmas)
+- [Medium](https://medium.com/@mohitsharmas)
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+---
+
+Built with ❤️ by Mohit Sharma

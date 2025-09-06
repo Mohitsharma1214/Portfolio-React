@@ -1,9 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import CountingNumber from '../components/CountingNumber';
 
 const About = () => {
+  useEffect(() => {
+    // Check if FontAwesome is loaded and show fallbacks if needed
+    const checkFontAwesome = () => {
+      const socialLinks = document.querySelectorAll('.social-link');
+      socialLinks.forEach(link => {
+        const icon = link.querySelector('i');
+        const fallback = link.querySelector('.social-fallback');
+
+        if (icon && fallback) {
+          // Check if FontAwesome icon is rendered properly
+          const iconStyles = window.getComputedStyle(icon, '::before');
+          if (!iconStyles.content || iconStyles.content === 'none' || iconStyles.content === '""') {
+            fallback.style.display = 'block';
+            icon.style.display = 'none';
+          }
+        }
+      });
+    };
+
+    // Run check after a short delay to ensure FontAwesome has loaded
+    setTimeout(checkFontAwesome, 100);
+  }, []);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -129,9 +152,14 @@ const About = () => {
                     src="/images/profile-avatar.png"
                     alt="Mohit Sharma - Professional Photo"
                     className="profile-img"
+                    onLoad={(e) => {
+                      const fallback = e.target.nextSibling;
+                      if (fallback) fallback.style.display = 'none';
+                    }}
                     onError={(e) => {
                       e.target.style.display = 'none';
-                      e.target.nextSibling.style.display = 'flex';
+                      const fallback = e.target.nextSibling;
+                      if (fallback) fallback.style.display = 'flex';
                     }}
                   />
                   <i className="fas fa-user-tie fallback-icon"></i>
@@ -183,7 +211,7 @@ const About = () => {
 
                   <div className="social-links">
                     <a href="https://www.linkedin.com/in/mohitsharmas-/" className="social-link" title="LinkedIn" target="_blank" rel="noopener noreferrer">
-                      <i className="fab fa-linkedin"></i>
+                      <i className="fab fa-linkedin-in"></i>
                     </a>
                     <a href="https://github.com/mohitsharma1214" className="social-link" title="GitHub" target="_blank" rel="noopener noreferrer">
                       <i className="fab fa-github"></i>

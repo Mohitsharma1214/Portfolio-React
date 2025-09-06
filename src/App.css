@@ -1,11 +1,15 @@
 /* Global Styles */
 html {
   overflow-x: hidden;
+  width: 100%;
 }
 
 body {
   padding-top: 70px;
   overflow-x: hidden;
+  overflow-y: auto;
+  width: 100%;
+  min-height: 100vh;
   /* Account for fixed navbar */
 }
 
@@ -13,6 +17,108 @@ body {
   width: 100%;
   min-height: 100vh;
   overflow-x: hidden;
+}
+
+/* Universal card overflow fix */
+.card,
+.achievement-card,
+.skill-category,
+.project-card,
+.certification-card,
+.experience-item,
+.nav-card,
+.info-card,
+.stat-card {
+  overflow: visible !important;
+  max-width: 100%;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Prevent hover effects from causing overflow */
+.card:hover,
+.achievement-card:hover,
+.skill-category:hover,
+.project-card:hover,
+.certification-card:hover,
+.experience-item:hover,
+.nav-card:hover,
+.info-card:hover,
+.stat-card:hover {
+  overflow: visible;
+  max-width: 100%;
+  will-change: transform;
+  backface-visibility: hidden;
+  z-index: 10;
+}
+
+/* Text content overflow handling */
+.card *,
+.achievement-card *,
+.profile-card *,
+.skill-category *,
+.project-card *,
+.certification-card *,
+.experience-item *,
+.nav-card *,
+.info-card *,
+.stat-card * {
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
+}
+
+/* Page-level overflow prevention */
+.home,
+.about,
+.skills,
+.projects,
+.contact {
+  overflow-x: hidden;
+  overflow-y: visible;
+  width: 100%;
+  max-width: 100vw;
+  position: relative;
+  padding-bottom: 2rem;
+}
+
+.home *,
+.about *,
+.skills *,
+.projects *,
+.contact * {
+  max-width: 100%;
+}
+
+/* Grid container fixes */
+.achievements-grid,
+.skills-grid,
+.projects-grid,
+.certifications-grid,
+.stats-grid,
+.summary-stats,
+.quick-nav-grid {
+  overflow: visible !important;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 2rem 0;
+  margin: 1rem 0;
+}
+
+.achievements-grid>*,
+.skills-grid>*,
+.projects-grid>*,
+.certifications-grid>*,
+.stats-grid>*,
+.summary-stats>*,
+.quick-nav-grid>* {
+  max-width: 100%;
+  overflow: visible;
+  box-sizing: border-box;
 }
 
 /* Home Page Styles */
@@ -430,7 +536,7 @@ body {
 
 .tech-item:hover {
   border-color: var(--primary-color);
-  transform: translateY(-5px);
+  transform: scale(1.05);
   box-shadow: 0 15px 35px rgba(139, 92, 246, 0.3);
 }
 
@@ -464,7 +570,8 @@ body {
   gap: 3rem;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 1rem 2rem;
+  overflow: visible;
 }
 
 .nav-card {
@@ -479,11 +586,15 @@ body {
   text-decoration: none;
   color: var(--text-primary);
   transition: all 0.3s ease;
+  overflow: hidden;
+  max-width: 100%;
+  box-sizing: border-box;
+  word-wrap: break-word;
 }
 
 .nav-card:hover {
   border-color: var(--primary-color);
-  transform: translateY(-10px);
+  transform: scale(1.03);
   box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3);
   color: var(--text-primary);
 }
@@ -523,13 +634,20 @@ body {
 
 /* About Page Styles */
 .about {
-  padding: 5rem 0;
+  padding: 5rem 0 8rem 0;
   background: var(--bg-primary);
+  overflow-x: hidden;
+  overflow-y: visible;
 }
 
 .about-content {
   max-width: 1200px;
   margin: 0 auto;
+  width: 100%;
+  max-width: calc(100vw - 2rem);
+  overflow: visible;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 .about-header {
@@ -548,12 +666,20 @@ body {
   grid-template-columns: 2fr 1fr;
   gap: 4rem;
   margin-bottom: 4rem;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .about-text {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .text-section h3 {
@@ -570,8 +696,12 @@ body {
 .achievements-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  gap: 1.5rem;
   margin-top: 2rem;
+  width: 100%;
+  overflow: visible;
+  box-sizing: border-box;
+  padding: 0.5rem 0;
 }
 
 .achievement-card {
@@ -581,13 +711,17 @@ body {
   text-align: center;
   border: 2px solid var(--border-color);
   transition: all 0.3s ease;
+  overflow: hidden;
+  max-width: 100%;
+  box-sizing: border-box;
+  word-wrap: break-word;
 }
 
 .achievement-card:hover {
   background: var(--gradient-primary);
   color: white;
   border-color: transparent;
-  transform: translateY(-5px);
+  transform: scale(1.05);
   box-shadow: 0 15px 35px rgba(139, 92, 246, 0.4);
 }
 
@@ -609,26 +743,30 @@ body {
 
 .profile-card {
   background: var(--bg-secondary);
-  padding: 2rem;
+  padding: 1.5rem;
   border-radius: 1.5rem;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   text-align: center;
   border: 2px solid var(--border-color);
   max-width: 350px;
   position: relative;
+  overflow: visible;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  height: fit-content;
 }
 
 .profile-image-large {
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   background: var(--gradient-secondary);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 4rem;
+  font-size: 3rem;
   color: white;
-  margin: 0 auto 1.5rem;
+  margin: 0 auto 1rem;
   box-shadow: 0 15px 30px rgba(6, 214, 160, 0.4);
   overflow: hidden;
   position: relative;
@@ -640,6 +778,8 @@ body {
   object-fit: cover;
   border-radius: 50%;
   transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
 }
 
 .profile-image-large .profile-img:hover {
@@ -647,28 +787,31 @@ body {
 }
 
 .profile-image-large .fallback-icon {
-  display: none;
+  display: flex;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  font-size: 4rem;
+  color: white;
+  z-index: 1;
 }
 
 .profile-info h4 {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
   color: var(--text-primary);
 }
 
 .profile-info p {
   color: var(--text-secondary);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .profile-stats {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 1.5rem;
-  padding: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
   background: var(--bg-primary);
   border-radius: 0.75rem;
   border: 1px solid var(--border-color);
@@ -695,13 +838,13 @@ body {
 }
 
 .profile-skills {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   text-align: left;
 }
 
 .profile-skills h5 {
   color: var(--text-primary);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -743,7 +886,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   padding: 0.5rem 1rem;
   background: var(--bg-primary);
   border-radius: 25px;
@@ -772,7 +915,7 @@ body {
   font-weight: 500;
   font-size: 0.9rem;
   transition: all 0.3s ease;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 .profile-cta:hover {
@@ -800,7 +943,16 @@ body {
   color: var(--text-secondary);
   transition: all 0.3s ease;
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 1rem;
+  position: relative;
+}
+
+.profile-card .social-link:hover {
+  background: var(--gradient-primary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
+  border-color: transparent;
 }
 
 .profile-card .social-link:hover {
@@ -813,6 +965,11 @@ body {
 
 .experience-section {
   margin-top: 4rem;
+  margin-bottom: 4rem;
+  padding: 2rem 1rem 4rem 1rem;
+  overflow: hidden; /* Changed from visible to hidden */
+  width: 100%;
+  max-width: 100%;
 }
 
 .experience-section h3 {
@@ -826,8 +983,9 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
-  padding-left: 2rem;
+  gap: 4rem;
+  padding: 2rem 3rem 4rem 2rem;
+  overflow: hidden; /* Changed from visible to hidden */
 }
 
 .experience-timeline::before {
@@ -851,13 +1009,17 @@ body {
   border-radius: 1rem;
   border: 2px solid var(--border-color);
   transition: all 0.3s ease;
-  margin-left: 1rem;
+  margin: 1rem 1rem 1rem 4rem;
+  overflow: hidden; /* Changed from visible to hidden */
+  max-width: calc(100% - 7rem);
+  box-sizing: border-box;
+  word-wrap: break-word;
 }
 
 .experience-item::before {
   content: '';
   position: absolute;
-  left: -47px;
+  left: -65px; /* Adjusted from -67px to -65px */
   top: 50%;
   transform: translateY(-50%);
   width: 12px;
@@ -872,13 +1034,13 @@ body {
 .experience-item:hover::before {
   background: var(--secondary-color);
   box-shadow: 0 0 20px rgba(139, 92, 246, 0.6);
-  transform: translateY(-50%) scale(1.2);
+  transform: translateY(-50%) scale(1.1); /* Reduced from 1.2 to 1.1 */
 }
 
 .experience-item:hover {
   border-color: var(--primary-color);
   box-shadow: 0 15px 35px rgba(139, 92, 246, 0.2);
-  transform: translateX(10px);
+  transform: scale(1.01); /* Reduced from 1.02 to 1.01 for less movement */
 }
 
 .experience-icon {
@@ -898,6 +1060,7 @@ body {
 
 .experience-content {
   flex: 1;
+  min-width: 0; /* Added to prevent flex item overflow */
 }
 
 .experience-content h4 {
@@ -952,7 +1115,10 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
-  overflow-x: hidden;
+  max-width: calc(100vw - 2rem);
+  overflow: visible;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 .skills-header {
@@ -968,11 +1134,12 @@ body {
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
   margin-bottom: 4rem;
   width: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .skill-category {
@@ -984,12 +1151,13 @@ body {
   transition: all 0.3s ease;
   width: 100%;
   max-width: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
   box-sizing: border-box;
+  word-wrap: break-word;
 }
 
 .skill-category:hover {
-  transform: translateY(-5px);
+  transform: scale(1.02);
   box-shadow: 0 25px 50px rgba(139, 92, 246, 0.3);
 }
 
@@ -1123,6 +1291,10 @@ body {
   align-items: center;
   gap: 1.5rem;
   transition: all 0.3s ease;
+  overflow: hidden;
+  max-width: 100%;
+  box-sizing: border-box;
+  word-wrap: break-word;
 }
 
 .certification-card:hover {
@@ -1194,17 +1366,23 @@ body {
 
 /* Projects Page Styles */
 .projects {
-  padding: 5rem 0;
+  padding: 6rem 1rem;
   background: var(--bg-primary);
   overflow-x: hidden;
+  overflow-y: visible;
   width: 100%;
+  max-width: 100vw;
+  position: relative;
 }
 
 .projects-content {
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
-  overflow-x: hidden;
+  max-width: calc(100vw - 2rem);
+  overflow: visible;
+  padding: 2rem;
+  box-sizing: border-box;
 }
 
 .projects-header {
@@ -1226,25 +1404,30 @@ body {
   gap: 1rem;
   margin-bottom: 4rem;
   width: 100%;
-  overflow-x: hidden;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 0 1rem;
+  box-sizing: border-box;
 }
 
 .filter-btn {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 1rem 1.5rem;
+  padding: 0.75rem 1.25rem;
   background: var(--bg-secondary);
   border: 2px solid var(--border-color);
-  border-radius: 30px;
+  border-radius: 25px;
   color: var(--text-secondary);
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
-  min-height: 50px;
-  justify-content: flex-start;
+  min-height: 44px;
+  justify-content: center;
   position: relative;
   overflow: hidden;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .filter-btn::before {
@@ -1283,29 +1466,40 @@ body {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
   margin-bottom: 4rem;
+  width: 100%;
+  overflow: visible;
+  box-sizing: border-box;
+  padding: 2rem 1rem;
+  max-width: 100%;
 }
 
 .project-card {
   background: var(--bg-secondary);
   border-radius: 1.5rem;
-  overflow: hidden;
+  overflow: visible;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   border: 2px solid var(--border-color);
   transition: all 0.3s ease;
   cursor: pointer;
+  max-width: 100%;
+  min-width: 320px;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  height: fit-content;
 }
 
 .project-card:hover {
   border-color: var(--primary-color);
   box-shadow: 0 25px 50px rgba(139, 92, 246, 0.4);
+  transform: scale(1.02);
 }
 
 .project-image {
   position: relative;
-  height: 200px;
+  height: 220px;
   background: var(--gradient-secondary);
   display: flex;
   align-items: center;
@@ -1313,6 +1507,7 @@ body {
   font-size: 3rem;
   color: white;
   overflow: hidden;
+  border-radius: 1.5rem 1.5rem 0 0;
 }
 
 .project-overlay {
@@ -1360,6 +1555,10 @@ body {
 
 .project-content {
   padding: 2rem;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .project-category {
@@ -1454,6 +1653,10 @@ body {
   background: var(--bg-primary);
   border-radius: 1rem;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  max-width: 100%;
+  box-sizing: border-box;
+  word-wrap: break-word;
 }
 
 .stat-icon {
@@ -1653,8 +1856,9 @@ body {
 .contact-main {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: 3rem;
   margin-bottom: 4rem;
+  align-items: start;
 }
 
 .contact-info {
@@ -1666,25 +1870,51 @@ body {
 .info-cards {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  max-width: 800px;
 }
 
 .info-card {
-  background: var(--bg-primary);
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
   padding: 1.5rem;
-  border-radius: 1rem;
+  border-radius: 1.2rem;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
   border: 2px solid var(--border-color);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem;
   transition: all 0.3s ease;
+  overflow: visible;
+  max-width: 100%;
+  min-height: 100px;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  position: relative;
+}
+
+.info-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(6, 214, 160, 0.1) 100%);
+  border-radius: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.info-card:hover::before {
+  opacity: 1;
 }
 
 .info-card:hover {
   border-color: var(--primary-color);
-  transform: translateY(-2px);
-  box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(139, 92, 246, 0.4);
 }
 
 .info-icon {
@@ -1698,22 +1928,46 @@ body {
   color: white;
   font-size: 1.2rem;
   flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
+  transition: all 0.3s ease;
+  margin-top: 0.25rem;
+}
+
+.info-card:hover .info-icon {
+  transform: scale(1.1);
+  box-shadow: 0 15px 35px rgba(139, 92, 246, 0.5);
+}
+
+.info-content {
+  position: relative;
+  z-index: 2;
+  flex: 1;
 }
 
 .info-content h4 {
   color: var(--text-primary);
   margin-bottom: 0.25rem;
-  font-size: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.3;
 }
 
-.info-content a {
+.info-content a,
+.info-content p {
   color: var(--text-secondary);
   text-decoration: none;
   font-size: 0.9rem;
+  line-height: 1.4;
+  transition: all 0.3s ease;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .info-content a:hover {
   color: var(--primary-color);
+  transform: translateX(5px);
 }
 
 .social-section h3 {
@@ -2111,6 +2365,19 @@ body {
     padding: 1.5rem;
     margin: 0;
     width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .achievement-card,
+  .profile-card,
+  .project-card,
+  .certification-card,
+  .nav-card,
+  .info-card,
+  .stat-card {
+    overflow: hidden;
     max-width: 100%;
     box-sizing: border-box;
   }
@@ -3043,4 +3310,385 @@ or Boundary Styles */
     height: 45px;
     font-size: 1rem;
   }
+}
+
+/* Resp
+onsive Design - Mobile First */
+@media (max-width: 1200px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    min-width: 280px;
+  }
+
+  .about-main {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .preview-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .projects-content,
+  .about-content,
+  .skills-content {
+    padding: 0 0.5rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    min-width: auto;
+    width: 100%;
+  }
+
+  .project-content {
+    min-height: auto;
+    padding: 1.5rem;
+  }
+
+  .achievements-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .quick-nav-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .certifications-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .summary-stats,
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .experience-timeline {
+    padding-left: 1rem;
+  }
+
+  .experience-item {
+    margin-left: 0.5rem;
+    padding: 1.5rem;
+  }
+
+  .experience-item::before {
+    left: -22px;
+  }
+
+  .experience-timeline::before {
+    left: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-text {
+    padding-right: 0;
+  }
+
+  .profile-card {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .project-filters {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .filter-btn {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .summary-stats,
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-stats {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .skill-badges {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Additional overflow fixes for specific elements */
+.text-section,
+.experience-content,
+.project-content,
+.cert-content {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.text-section p,
+.experience-content p,
+.project-content p,
+.cert-content p {
+  width: 100%;
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Ensure all headings don't overflow */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  width: 100%;
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
+}
+
+/* Fix for long URLs or text in links */
+a {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Addition
+al fixes for card hover effects */
+.container {
+  padding: 2rem 1rem;
+  overflow: visible;
+}
+
+/* Ensure all sections have proper spacing for hover effects */
+.hero-section,
+.about-preview-section,
+.quick-nav-section,
+.skills,
+.projects,
+.about {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+/* Fix for any remaining overflow issues */
+* {
+  box-sizing: border-box;
+}
+
+/* Ensure hover effects are always visible */
+.card,
+.achievement-card,
+.skill-category,
+.project-card,
+.certification-card,
+.experience-item,
+.nav-card,
+.info-card,
+.stat-card,
+.profile-card {
+  position: relative;
+  z-index: 1;
+}
+
+.card:hover,
+.achievement-card:hover,
+.skill-category:hover,
+.project-card:hover,
+.certification-card:hover,
+.experience-item:hover,
+.nav-card:hover,
+.info-card:hover,
+.stat-card:hover {
+  z-index: 10;
+  position: relative;
+}
+
+/* Social links improvements */
+.profile-card .social-links {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding: 0;
+}
+
+.profile-card .social-link {
+  width: 40px;
+  height: 40px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-size: 1rem;
+  position: relative;
+  overflow: visible;
+}
+
+.profile-card .social-link i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  line-height: 1;
+}
+
+/ * COMPREHENSIVE CARD HOVER FIX */
+/* Force all containers to allow hover effects to be visible */
+* {
+  box-sizing: border-box;
+}
+
+/* Override any overflow hidden that might be causing clipping */
+.container,
+.about-content,
+.skills-content,
+.projects-content,
+.home-content,
+.contact-content,
+.achievements-grid,
+.skills-grid,
+.projects-grid,
+.certifications-grid,
+.stats-grid,
+.summary-stats,
+.quick-nav-grid,
+.experience-timeline,
+.experience-section,
+.about-main,
+.about-text,
+.about-visual,
+.hero-content,
+.preview-content,
+.tech-showcase,
+section,
+main,
+div[class*="grid"],
+div[class*="content"],
+div[class*="section"] {
+  overflow: visible !important;
+  padding-top: 2rem !important;
+  padding-bottom: 2rem !important;
+}
+
+/* Ensure all cards have proper spacing and visibility */
+.card,
+.achievement-card,
+.skill-category,
+.project-card,
+.certification-card,
+.experience-item,
+.nav-card,
+.info-card,
+.stat-card,
+.profile-card {
+  overflow: visible !important;
+  position: relative;
+  z-index: 1;
+  margin: 1rem 0;
+}
+
+/* Enhanced hover states with proper z-index */
+.card:hover,
+.achievement-card:hover,
+.skill-category:hover,
+.project-card:hover,
+.certification-card:hover,
+.experience-item:hover,
+.nav-card:hover,
+.info-card:hover,
+.stat-card:hover {
+  z-index: 100 !important;
+  position: relative;
+  overflow: visible !important;
+}
+
+/* Page level fixes */
+.home,
+.about,
+.skills,
+.projects,
+.contact {
+  overflow-x: hidden;
+  overflow-y: visible !important;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+/* Grid specific fixes */
+.achievements-grid {
+  gap: 2rem !important;
+  padding: 2rem 0 !important;
+}
+
+.projects-grid {
+  gap: 2rem !important;
+  padding: 2rem 0 !important;
+}
+
+.skills-grid {
+  gap: 2rem !important;
+  padding: 2rem 0 !important;
+}
+
+.quick-nav-grid {
+  gap: 3rem !important;
+  padding: 2rem !important;
+}
+
+/* Experience timeline specific fix */
+.experience-timeline {
+  padding-bottom: 4rem !important;
+  overflow: visible !important;
+}
+
+.experience-item {
+  margin-bottom: 2rem !important;
+  overflow: visible !important;
 }
